@@ -22,10 +22,7 @@ def retrieve_answers(query):
 def main():
     st.title("Retrieval-Augmented Generation (RAG) on NVIDIA's 2023 Annual Financial Report")
 
-    text_input = st.text_input("Write your Query below:\n
-    i.e What was NVIDIA's total revenue in 2023?\n 
-    What were NVIDIA's key social responsibility initiatives in 2023?\n 
-    How did NVIDIA's market share in graphics and compute sectors evolve in 2023?")
+    text_input = st.text_input("Write your Query below: i.e What was NVIDIA's total revenue in 2023?")
                             
     if st.button("Ask Query"):
         if len(text_input) > 0:

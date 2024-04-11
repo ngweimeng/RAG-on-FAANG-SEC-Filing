@@ -3,14 +3,12 @@
         Module: Open-source LLM Setup
 ===========================================
 '''
-from langchain.llms import CTransformers
+from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
+
+model_name = "deepset/roberta-base-squad2"
 
 def build_llm():
     # Local CTransformers model
-    llm = CTransformers(model="TheBloke/Llama-2-7b-Chat-GGML",
-                        model_file="llama-2-7b-chat.ggmlv3.q8_0.bin",
-                        config={'max_new_tokens': 256,
-                                'temperature': 0.01}
-                        )
+    llm = AutoModelForQuestionAnswering.from_pretrained(model_name)
 
     return llm

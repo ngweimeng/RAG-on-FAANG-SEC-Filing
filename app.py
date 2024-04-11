@@ -31,7 +31,7 @@ def retrieve_answers(query):
     return answer, sources, time_elapsed
 
 def main():
-    st.title("Retrieval-Augmented Generation (RAG) on NVIDIA's 2023 Annual Financial Report")
+    st.title("[Test] Retrieval-Augmented Generation (RAG) on NVIDIA's 2023 Annual Financial Report")
 
     text_input = st.text_input("Write your Query below: i.e., 'What was NVIDIA's total revenue in 2023?'")
                             

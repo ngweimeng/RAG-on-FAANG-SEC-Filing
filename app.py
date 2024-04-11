@@ -1,54 +1,59 @@
 import streamlit as st
-import logging
 from src.utils import setup_dbqa
+import timeit
 
-logging.basicConfig(level=logging.DEBUG)
-
+# Initialize DBQA only once when the Streamlit app starts
 @st.cache_resource
 def get_dbqa():
-    try:
-        return setup_dbqa()
-    except Exception as e:
-        logging.error("Failed to initialize the DBQA system: %s", str(e))
-        raise
+    return setup_dbqa()
 
 def retrieve_answers(query):
-    try:
-        dbqa = get_dbqa()  # Retrieve the cached DBQA object
-        start = timeit.default_timer()
-        response = dbqa({'query': query})
-        end = timeit.default_timer()
-        time_elapsed = end - start
-        answer = response["result"]
-        source_docs = response['source_documents']
-        sources = []
+    dbqa = get_dbqa()  # Retrieve the cached DBQA object
 
-        for doc in source_docs:
-            sources.append({
-                "text": doc.page_content,
-                "source": doc.metadata["source"],
-                "page": doc.metadata["page"]
-            })
-        return answer, sources, time_elapsed
-    except Exception as e:
-        logging.error("Error during query retrieval: %s", str(e))
-        raise
+    start = timeit.default_timer()  # Start timing
+    response = dbqa({'query': query})
+    end = timeit.default_timer()  # End timing
 
-# Streamlit main function with error handling
+    time_elapsed = end - start  # Calculate the time elapsed
+
+    answer = response["result"]
+    source_docs = response['source_documents']
+    sources = []
+
+    for doc in source_docs:
+        source_info = {
+            "text": doc.page_content,
+            "source": doc.metadata["source"],
+            "page": doc.metadata["page"]
+        }
+        sources.append(source_info)
+
+    return answer, sources, time_elapsed
+
 def main():
-    st.title("[Test2] NVIDIA's 2023 Financial Report Insights")
+    st.title("[Test] Retrieval-Augmented Generation (RAG) on NVIDIA's 2023 Annual Financial Report")
 
-    query = st.text_input("Enter your query, e.g., 'What was NVIDIA's total revenue in 2023?'")
+    text_input = st.text_input("Write your Query below: i.e., 'What was NVIDIA's total revenue in 2023?'")
+                            
     if st.button("Ask Query"):
-        try:
-            answer, sources, time_elapsed = retrieve_answers(query)
-            st.success(answer)
-            st.write(f"Time to retrieve response: {time_elapsed:.2f} seconds")
-            for i, source in enumerate(sources):
-                st.write(f"Source Document {i+1}: {source['source']} (Page {source['page']})")
-                st.text_area("Content", source['text'], height=150)
-        except Exception as e:
-            st.error(f"An error occurred: {e}")
+        if len(text_input) > 0:
+            st.info("Your Query: " + text_input)
+            try:
+                answer, sources, time_elapsed = retrieve_answers(text_input)
+                st.success(answer)
+                
+                st.write(f"Time to retrieve response: {time_elapsed:.2f} seconds")  # Display time taken
+                st.write("="*60)
+
+                for i, source in enumerate(sources):
+                    st.subheader(f"Source Document {i+1}")
+                    st.text(f"Source Text: {source['text']}")
+                    st.text(f"Document Name: {source['source']}")
+                    st.text(f"Page Number: {source['page']}")
+                    st.write("="*60)
+                    
+            except Exception as e:
+                st.error(f"An error occurred: {e}")
 
 if __name__ == "__main__":
     main()

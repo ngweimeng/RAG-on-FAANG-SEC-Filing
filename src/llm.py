@@ -3,11 +3,13 @@
         Module: Open-source LLM Setup
 ===========================================
 '''
-from langchain_community.llms import CTransformers
+import os
+from langchain.llms import OpenAI
 
 def build_llm():
-    # Local CTransformers model
-
-    llm = CTransformers(model='TheBloke/Llama-2-7B-Chat-GGUF', model_file='llama-2-7b-chat.Q4_K_M.gguf')    
+    openai_api_key = os.getenv('OPENAI_API_KEY')
+    if openai_api_key is None:
+        raise ValueError("No OpenAI API key found in environment variables")
+    llm = OpenAI(temperature=0, openai_api_key=openai_api_key)
     return llm
 

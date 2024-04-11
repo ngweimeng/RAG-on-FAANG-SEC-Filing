@@ -3,7 +3,7 @@ from src.utils import setup_dbqa
 import timeit
 
 # Initialize DBQA only once when the Streamlit app starts
-@st.experimental_singleton
+@st.cache_resource
 def get_dbqa():
     return setup_dbqa()
 

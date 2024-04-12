@@ -4,7 +4,9 @@ This project leverages a Retrieval Augmented Generation (RAG) approach to analyz
 
 ## Background
 
-This project aims to simplify the process of extracting specific financial information from the dense and extensive 10-K filings of FAANG companies. Using advanced NLP techniques and machine learning, it answers queries related to financial data by retrieving relevant information from the filings and generating concise answers.
+This project targets the extraction of financial information from the latest SEC 10-K filings of FAANG companies. By leveraging Retrieval Augmented Generation (RAG) powered by OpenAI's "gpt-3.5-turbo-instruct" model, the application processes queries to retrieve the most relevant information from these filings and generate responses. 
+
+Unlike broader models such as ChatGPT, which may not have training data up to these recent dates, this approach uses the latest filings directly, offering more up-to-date information that might not be available in pre-trained models.
 
 ## Why RAG?
 
@@ -48,7 +50,7 @@ These adjustments will help avoid surpassing the token limit and ensure a smooth
 
 ## Conclusion
 
-This tool is designed to assist financial analysts, investors, and enthusiasts in quickly obtaining clear and concise answers from complex financial documents, enhancing understanding and decision-making processes.
+This tool is designed to assist investors to obtain answers from the latest financial documents that might not be available in pre-trained models.
 
 For feedback, issues, or contributions, feel free to interact through the Streamlit app's feedback system or directly via GitHub issues.
 

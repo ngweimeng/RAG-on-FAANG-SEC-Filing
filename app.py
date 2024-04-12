@@ -33,7 +33,7 @@ def main():
 
     # User input for custom query
     user_query = st.text_input("Enter your query:", 
-                               placeholder="E.g., Which FAANG company generated the highest revenue?")
+                               placeholder="E.g. Which FAANG company generated the highest revenue?")
 
     # Button to trigger the computation
     if st.button('Analyze Query'):

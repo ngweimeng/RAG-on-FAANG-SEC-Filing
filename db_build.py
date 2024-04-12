@@ -12,8 +12,8 @@ def run_db_build():
                              glob='*.pdf',
                              loader_cls=PyPDFLoader)
     documents = loader.load()
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500,
-                                                   chunk_overlap=50)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=5000,
+                                                   chunk_overlap=500)
     texts = text_splitter.split_documents(documents)
 
     embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2',

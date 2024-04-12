@@ -3,7 +3,7 @@ from src.utils import setup_dbqa
 import timeit
 
 def main():
-    st.title("Analyzing 10-K Filings Submitted in 2023 for FAANG Companies: A Retrieval Augmented Generation (RAG) Approach")
+    st.title("Analyzing 10-K Filings submitted in 2023 for FAANG Companies: A Retrieval Augmented Generation (RAG) Approach")
 
     # User input for custom query
     user_query = st.text_input("Enter your query:", 

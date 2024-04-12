@@ -1,6 +1,6 @@
 '''
 ===========================================
-        Module: Open-source LLM Setup
+        Module: LLM Setup
 ===========================================
 '''
 from langchain.llms import OpenAI

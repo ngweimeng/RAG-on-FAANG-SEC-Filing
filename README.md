@@ -1,49 +1,56 @@
 # Analyzing 10-K Filings submitted in 2023 for FAANG Companies: A Retrieval Augmented Generation (RAG) Approach
 
+This project leverages a Retrieval Augmented Generation (RAG) approach to analyze the 2023 10-K filings of FAANG companies. It provides insights into financial metrics and business performance directly from financial documents.
+
 ## Background
 
-Access to Large Language Models (LLMs) such as OpenAI's GPT-4 has been revolutionized through user-friendly APIs, yet the need for self-hosted solutions persists due to strict data privacy and residency requirements. The rise of open-source LLMs offers an alternative to third-party providers, granting more control over model deployment.
+This project aims to simplify the process of extracting specific financial information from the dense and extensive 10-K filings of FAANG companies. Using advanced NLP techniques and machine learning, it answers queries related to financial data by retrieving relevant information from the filings and generating concise answers.
 
-Hosting LLMs in-house or on cloud services introduces compute capacity challenges. GPUs, while powerful, incur high costs. This project explores running quantized open-source LLMs on CPUs for document Q&A tasks using Retrieval Augmented Generation (RAG). The file we will run the document Q&A on SEC fillings submitted in 2023 by FAANG Companies (Meta, Amazon, Apple, Netflix, Alphabet).
+## Why RAG?
 
-## Quantization Overview
+Retrieval Augmented Generation (RAG) combines the best of both retrieval-based and generative NLP approaches. By retrieving pertinent information and then generating text based on that information, RAG provides highly accurate and contextually relevant answers. This approach is particularly beneficial for organizations that handle sensitive or proprietary information for several reasons:
 
-Large Language Models (LLMs) are powerful yet typically require significant compute and memory resources. Quantization addresses this by compressing the models, thereby shrinking their memory usage and speeding up inference without markedly sacrificing performance.
+- **Data Privacy and Security**: With RAG, it is possible to deploy models within a secure, private environment, ensuring that sensitive data never leaves the organizational boundaries.
+- **Compliance with Data Residency Laws**: RAG can be deployed on local servers or private clouds to meet specific jurisdictional data residency requirements, an essential factor for many industries such as finance and healthcare.
+- **Customization for Proprietary Needs**: RAG allows organizations to customize both the retrieval and generation phases, using proprietary data sets that offer competitive advantages without exposing them externally.
+  
+## Tools/Libraries
 
-In essence, quantization lowers the bit representation of numbers—in this case, the model's weights. By converting, for example, 16-bit floating-point weights to 8-bit integers, we significantly reduce the model size. This process makes LLMs viable for deployment on CPUs and embedded systems with limited resources.
+- **Streamlit**: For creating the web interface.
+- **Langchain**: Used for setting up the RetrievalQA framework and handling document embeddings.
+- **FAISS**: For efficient similarity search and information retrieval from high-dimensional data.
+- **Hugging Face Transformers**: Provides pre-trained models used for generating embeddings and textual responses.
+- **OpenAI "gpt-3.5-turbo-instruct"**: Utilized for generating responses based on the retrieved information, known for its ability to understand and generate informative, concise, and accurate answers.
 
-## Tools and Libraries
+## Using the Application
 
-- **LangChain**: A framework to build applications that leverage language model capabilities.
-- **FAISS**: A library for fast similarity search and clustering of dense vectors, aiding in the efficient handling of large datasets.
-- **Sentence-Transformers (all-MiniLM-L6-v2)**: A pre-trained transformer model generating 384-dimensional vectors from text, enhancing semantic search and clustering applications.
-- **Gpt-3.5-turbo-instruct**: A dialogue-centric Llama 2 model fine-tuned with extensive instruction datasets and over a million human annotations for conversational AI.
+Access the Streamlit application directly via:
 
-## Implementation Guide
+[FAANG 2023 Annual Report Analysis App](https://faang-2023-annual-report.streamlit.app/)
 
-### Step 1: Data Processing & Vector Store Creation
-- Ingest data, split into manageable chunks.
-- Load the Sentence-Transformers model for embedding generation.
-- Index and save chunks in the FAISS vector store at 'vectorstore/db_faiss'.
+### How to Use
 
-### Step 2: Prompt Template Setup
-- Use appropriate prompt templates for the Llama-2-7B-Chat model, avoiding conversational formats not optimized for this model.
+- Navigate to the provided URL to access the web application.
+- Enter your query related to the financial data of FAANG companies in the input box.
+- Press the "Analyze Query" button to process your query.
+- View the answer and the source documents that were used to generate the response.
 
-### Step 3: Download Llama-2-7B-Chat Model
-- Download the quantized Llama-2-7B-Chat model GGML binary from Hugging Face.
+### Note on Usage
 
-### Step 4: LLM Setup
-- Use the CTransformers LLM wrapper from LangChain to integrate the downloaded GGML model.
+The application's underlying model, OpenAI's "gpt-3.5-turbo-instruct", supports a maximum context length of 4097 tokens. Occasionally, if your query combined with the necessary contextual data exceeds this limit, the model will not be able to process the request and will return an error. 
 
-### Step 5: RetrievalQA Initialization
-- Implement functions to create a LangChain RetrievalQA object for document Q&A capabilities.
+To ensure your queries are processed successfully:
+- **Keep Your Queries Concise**: Try to formulate your questions as succinctly as possible.
+- **Split Complex Queries**: If your query is naturally long or complex, consider breaking it into smaller, separate questions.
+- **Monitor Token Usage**: Be aware of the length of both your queries and the expected completion. Reduce unnecessary details in your questions.
 
-### Step 6: Main Script Assembly
-- Use `argparse` for CLI input and integrate all components into `app.py`.
+These adjustments will help avoid surpassing the token limit and ensure a smoother experience using the application.
 
-### Step 7: Streamlit Deployment
-```bash
-streamlit run app.py
-```
+## Conclusion
+
+This tool is designed to assist financial analysts, investors, and enthusiasts in quickly obtaining clear and concise answers from complex financial documents, enhancing understanding and decision-making processes.
+
+For feedback, issues, or contributions, feel free to interact through the Streamlit app's feedback system or directly via GitHub issues.
+
 
 

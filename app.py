@@ -3,11 +3,11 @@ from src.utils import setup_dbqa
 import timeit
 
 def main():
-    st.title("FinRAG")
+    st.title("Analyzing 2023 10-K Filings for FAANG Companies: A Retrieval Augmented Generation (RAG) Approach")
 
     # User input for custom query
-    user_query = st.text_input("Enter your query about NVIDIA's financial data:", 
-                               placeholder="Type your question here...")
+    user_query = st.text_input("Enter your query:", 
+                               placeholder="E.g., How did Apple's revenue change in 2023?")
 
     # Button to trigger the computation
     if st.button('Analyze Query'):

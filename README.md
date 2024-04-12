@@ -1,10 +1,10 @@
-# RAG on NVIDIA's 2023 Annual Report
+# Analyzing 10-K Filings submitted in 2023 for FAANG Companies: A Retrieval Augmented Generation (RAG) Approach
 
 ## Background
 
 Access to Large Language Models (LLMs) such as OpenAI's GPT-4 has been revolutionized through user-friendly APIs, yet the need for self-hosted solutions persists due to strict data privacy and residency requirements. The rise of open-source LLMs offers an alternative to third-party providers, granting more control over model deployment.
 
-Hosting LLMs in-house or on cloud services introduces compute capacity challenges. GPUs, while powerful, incur high costs. This project explores running quantized open-source LLMs on CPUs for document Q&A tasks using Retrieval Augmented Generation (RAG). The file we will run the document Q&A on is the  **96-page 2023 annual report of NVIDIA**
+Hosting LLMs in-house or on cloud services introduces compute capacity challenges. GPUs, while powerful, incur high costs. This project explores running quantized open-source LLMs on CPUs for document Q&A tasks using Retrieval Augmented Generation (RAG). The file we will run the document Q&A on SEC fillings submitted in 2023 by FAANG Companies (Meta, Amazon, Apple, Netflix, Alphabet).
 
 ## Quantization Overview
 
@@ -15,10 +15,9 @@ In essence, quantization lowers the bit representation of numbers—in this case
 ## Tools and Libraries
 
 - **LangChain**: A framework to build applications that leverage language model capabilities.
-- **C Transformers**: Provides Python bindings for highly efficient Transformer models using the GGML library, optimized for C/C++.
 - **FAISS**: A library for fast similarity search and clustering of dense vectors, aiding in the efficient handling of large datasets.
 - **Sentence-Transformers (all-MiniLM-L6-v2)**: A pre-trained transformer model generating 384-dimensional vectors from text, enhancing semantic search and clustering applications.
-- **Llama-2-7B-Chat**: A dialogue-centric Llama 2 model fine-tuned with extensive instruction datasets and over a million human annotations for conversational AI.
+- **Gpt-3.5-turbo-instruct**: A dialogue-centric Llama 2 model fine-tuned with extensive instruction datasets and over a million human annotations for conversational AI.
 
 ## Implementation Guide
 

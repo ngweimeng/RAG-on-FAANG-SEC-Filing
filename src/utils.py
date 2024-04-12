@@ -23,7 +23,7 @@ def set_qa_prompt():
 def build_retrieval_qa(llm, prompt, vectordb):
     dbqa = RetrievalQA.from_chain_type(llm=llm,
                                        chain_type='stuff',
-                                       retriever=vectordb.as_retriever(search_kwargs={'k': 10}),
+                                       retriever=vectordb.as_retriever(search_kwargs={'k': 5}),
                                        return_source_documents=True,
                                        chain_type_kwargs={'prompt': prompt}
                                        )

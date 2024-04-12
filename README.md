@@ -4,7 +4,7 @@ This project leverages a Retrieval Augmented Generation (RAG) approach to analyz
 
 ## Background
 
-This project targets the extraction of financial information from the latest SEC 10-K filings of FAANG companies. By leveraging Retrieval Augmented Generation (RAG) powered by OpenAI's "gpt-3.5-turbo-instruct" model, the application processes queries to retrieve the most relevant information from these filings and generate responses. 
+By leveraging Retrieval Augmented Generation (RAG) powered by OpenAI's "gpt-3.5-turbo-instruct" model, the application processes queries to retrieve the most relevant information from these SEC 10-K filings and generate responses. 
 
 Unlike broader models such as ChatGPT, which may not have training data up to these recent dates, this approach uses the latest filings directly, offering more up-to-date information that might not be available in pre-trained models.
 

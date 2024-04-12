@@ -14,8 +14,7 @@ def main():
 
     **Why Use RAG?**
     - **Data Privacy and Customization:** RAG allows organizations to analyze proprietary information securely within their own systems, reducing the risk of exposing sensitive data.
-    - **Up-to-Date Insights:** Unlike GPT models which may not be trained on the most recent data, RAG utilizes the latest documents directly. For example, if analyzing Q4 results of a FAANG company released in early 2024, RAG would use this fresh information directly from the source, whereas GPT models would rely on data only up to their last training cut-off.
-    - **Compliance with Data Residency Laws:** Ensures that data handling complies with local regulations by processing data within required jurisdictions.
+    - **Up-to-Date Insights:** Unlike GPT models which may not be trained on the most recent data, RAG utilizes the latest documents directly. (i.e. if analyzing Q4 results of a FAANG company released in early 2024, RAG would use this fresh information directly from the source, whereas GPT models would rely on data only up to their last training cut-off.
 
     **Getting Started:**
     1. **Input Your Query:** Use the input box to type your financial query.

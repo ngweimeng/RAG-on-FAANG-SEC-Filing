@@ -1,6 +1,6 @@
 # Analyzing 10-K Filings submitted in 2023 for FAANG Companies: A Retrieval Augmented Generation (RAG) Approach
 
-This project leverages a Retrieval Augmented Generation (RAG) approach to analyze the 2023 10-K filings of FAANG companies. It provides insights into financial metrics and business performance directly from financial documents.
+This project leverages a Retrieval Augmented Generation (RAG) approach to analyze the most recent (i.e. 2023) 10-K filings of FAANG companies. It provides insights into financial metrics and business performance directly from these financial documents.
 
 ## Background
 

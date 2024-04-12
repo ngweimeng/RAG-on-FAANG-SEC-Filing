@@ -26,6 +26,9 @@ def main():
 
     **Feedback and Contributions:**
     - Feedback is invaluable. Report issues and contribute via GitHub @ngweimeng.
+    
+    **Explore the Code:**
+    - Check out the GitHub repository for more details on the implementation and to contribute: [GitHub Repository](https://github.com/ngweimeng/RAG-on-FAANG-SEC-Filing)
     """)
 
     # User input for custom query

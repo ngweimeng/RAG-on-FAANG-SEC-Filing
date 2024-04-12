@@ -7,7 +7,7 @@ def main():
 
     # User input for custom query
     user_query = st.text_input("Enter your query:", 
-                               placeholder="E.g., How did Apple's revenue change in 2023?")
+                               placeholder="E.g., What is the break down of Amazon's Operating Income?")
 
     # Button to trigger the computation
     if st.button('Analyze Query'):

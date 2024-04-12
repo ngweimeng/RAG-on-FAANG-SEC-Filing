@@ -3,7 +3,6 @@
         Module: Open-source LLM Setup
 ===========================================
 '''
-import os
 from langchain.llms import OpenAI
 import streamlit as st
 
